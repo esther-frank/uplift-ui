@@ -1,12 +1,21 @@
+import { BrowserRouter as Router, Routes, Route } from 'react-router'
+
 import './App.scss'
-import { Card } from 'react-bootstrap'
+import Login from './pages/Login'
+import Reflections from './pages/Reflections'
+import Home from './pages/Home'
+import Navbar from './Components/Navbar'
 
 function App() {
   return (
-    <>
-      <p>Hello, world</p>
-      <Card>Hello again world</Card>
-    </>
+    <Router>
+      <Navbar/>
+      <Routes>
+        <Route path="/pages/home" element={<Home />} />
+        <Route path="/" element={<Login />} />
+        <Route path="/pages/reflections" element={<Reflections />} />
+      </Routes>
+    </Router>
   )
 }
 
