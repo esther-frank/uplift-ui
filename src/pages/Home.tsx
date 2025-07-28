@@ -1,7 +1,11 @@
-const Home = () => {
+interface homeProps {
+  userId: string | null
+}
+const Home = ({ userId }: homeProps) => {
+  const user = userId
   return (
     <div>
-      <a href="/pages/reflections">reflections</a>
+      <a href="/pages/reflections">{user}</a>
     </div>
   )
 }

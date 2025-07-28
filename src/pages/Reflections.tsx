@@ -1,6 +1,10 @@
-const Reflections = () => {
+interface ReflectionsProps {
+    userId: string | null;
+}
+
+const Reflections = ({ userId }: ReflectionsProps) => {
     return (
-        <div><a href="/">Go back to Login</a></div>
+        <div><a href="/">Go back to Login {userId}</a></div>
     )
 }
 
