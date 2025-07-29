@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './ReflectionPage.css';
 
-const MOODS = ['😊', '😐', '😞'] as const;
+const MOODS = ['😊', '😐', '😞', '😄', '😢', '😠', '😴', '🤔', '😎'] as const;
+
 
 const ReflectionPage: React.FC = () => {
   const [reflection, setReflection] = useState('');
