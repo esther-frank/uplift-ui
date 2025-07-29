@@ -11,15 +11,22 @@ import Navbar from './Components/Navbar'
 function App() {
   const [userId, setUserId] = useState<string | null>('123')
   return (
-    <Router>
-      <Navbar/>
-      <Routes>
-        <Route path="/pages/home" element={<Home userId={userId}/>} />
-        <Route path="/" element={<Login userId={userId} setuserId={setUserId} />} />
-        <Route path="/pages/reflections" element={<Reflections userId={userId}/>} />
-        <Route path="/pages/reflection" element={<ReflectionPage />} />
-      </Routes>
-    </Router>
+    <div>
+      <h1>🎉 App is Working!</h1>
+      <p>If you can see this, React is running correctly.</p>
+      <Router>
+        <div>
+          <Navbar/>
+          <Routes>
+            <Route path="/pages/home" element={<Home userId={userId}/>} />
+            <Route path="/" element={<Login userId={userId} setuserId={setUserId} />} />
+            <Route path="/pages/reflections" element={<Reflections userId={userId}/>} />
+            <Route path="/pages/reflection" element={<ReflectionPage />} />
+            <Route path="/reflection" element={<ReflectionPage />} />
+          </Routes>
+        </div>
+      </Router>
+    </div>
   )
 }
 
