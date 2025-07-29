@@ -1,18 +1,15 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { useState } from 'react'
 
 import './App.scss'
 import Login from './pages/Login/Login'
-import Login from './pages/Login/Login'
 import Reflections from './pages/Reflections'
-import ReflectionPage from './pages/ReflectionPage'
-import Home from './pages/Home/Home/Home'
-import Navbar from './Components/Navbar/Navbar/Navbar'
+// import ReflectionPage from './pages/ReflectionPage'
+import Home from './pages/Home/Home'
+import Navbar from './Components/Navbar/Navbar'
 
 function App() {
   const [userId, setUserId] = useState<string | null>('123')
-  const [showNavItems, setShowNavItems] = useState<boolean>(false)
   const [showNavItems, setShowNavItems] = useState<boolean>(false)
   return (
     <Router>
