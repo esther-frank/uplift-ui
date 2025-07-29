@@ -1,0 +1,157 @@
+/* Google Fonts Import for Lora, Arapey, and Moontime */
+
+:root {
+
+  /* Font color */
+  --primary-font-color: #000000;
+  --secondary-font-color: #ffffff;
+  --accent-font-color: #eb9486;
+
+  /* Colors */
+  --foreground-color: #000000;
+  --background-color: #f7f6f6;
+  --accent-color: #67482c;
+  --secondary-accent-color: #b58563;
+  --secondary-color: #92747e;
+}
+
+.pageContent {
+  margin-top: 15vh;
+  width: 100%;
+}
+
+.homepageLayout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto auto auto ;
+  gap: 20px;
+  padding: 20px;
+  max-width: var(--max-width);
+  background-color: var(--background-color);
+  box-sizing: border-box; /* Ensure padding is included in width */
+  overflow-x: hidden;
+}
+.WelcomeSection {
+  grid-column: 1 / 2 ; 
+  justify-content: center;
+  align-items: center;
+  position: relative; 
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 600px;
+  display: flex;
+  flex-direction: column;
+}
+.Title {
+  font-family: var(--font-primary);
+  text-align: center;
+  justify-content: center;
+  color: var(--primary-font-color);
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.titleAccent {
+  font-family: var(--font-accent);
+  color: var(--primary-font-color);
+  text-align: center;
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.subtitle {
+  font-size: 1rem;
+  text-align: center;
+  background-color: var(--secondary-color);
+  padding: 10px;
+  color: var(--primary-font-color);
+  font-family: var(--font-primary);
+}
+
+
+.whatIsSection {
+ grid-column: 2 / 3 ; 
+  justify-content: center;
+  align-items: center;
+  position: relative; 
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 600px;
+  display: flex;
+  flex-direction: column;
+}
+/* Second Row: Vision Section */
+.whatIsTitle {
+  font-family: var(--font-primary);
+  text-align: center;
+  justify-content: center;
+  color: var(--primary-font-color);
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.carouselSection{
+  grid-column: 1 /-1 ; 
+  justify-content: center;
+  align-items: center;
+}
+
+
+.ListSection {
+  grid-column: 1 / -1; /* Span all columns */
+  justify-content: center;
+  align-items: center;
+  color: var(--primary-font-color);
+  background-color: var(--secondary-font-color);
+  position: relative; 
+  height: 60vh;
+}
+.ListTitle {
+  color: var(--primary-font-color);
+  font-family: var(--font-secondary);
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.List {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px;
+  padding: 10px;
+  box-sizing: border-box;
+  width: 100%;
+  margin: 0 auto;
+  background-color: var(--secondary-font-color);
+  color: var(--primary-font-color);
+  position: absolute;
+  top: 25%;
+  left: 10%;
+  overflow-x: auto;
+}
+.ListHeading1 {
+  grid-column: 1;
+  color: var(--primary-font-color);
+}
+.ListHeading2 {
+  grid-column: 2;
+  color: var(--primary-font-color);
+}
+.ListHeading3 {
+  grid-column: 3;
+  color: var(--primary-font-color);
+}
+.ListContent{
+  justify-content: center;
+  align-items: center;
+  height: 10vh;
+}
+
