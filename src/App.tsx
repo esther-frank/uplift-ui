@@ -4,6 +4,7 @@ import { useState } from 'react'
 import './App.scss'
 import Login from './pages/Login'
 import Reflections from './pages/Reflections'
+import ReflectionPage from './pages/ReflectionPage'
 import Home from './pages/Home'
 import Navbar from './Components/Navbar'
 
@@ -16,6 +17,7 @@ function App() {
         <Route path="/pages/home" element={<Home userId={userId}/>} />
         <Route path="/" element={<Login userId={userId} setuserId={setUserId} />} />
         <Route path="/pages/reflections" element={<Reflections userId={userId}/>} />
+        <Route path="/pages/reflection" element={<ReflectionPage />} />
       </Routes>
     </Router>
   )

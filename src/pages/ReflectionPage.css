@@ -1,0 +1,54 @@
+/* ReflectionPage specific styles */
+.reflection-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+}
+
+.mood-button {
+  transition: all 0.3s ease;
+  border: 2px solid transparent !important;
+}
+
+.mood-button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.mood-button.selected {
+  border-color: #0d6efd !important;
+  box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+}
+
+.reflection-textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.progress-badge {
+  font-size: 0.9rem;
+  padding: 0.5rem 0.75rem;
+}
+
+.action-buttons {
+  gap: 0.75rem;
+}
+
+@media (max-width: 576px) {
+  .mood-selector {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .mood-button {
+    width: 60px;
+    height: 60px;
+  }
+  
+  .action-buttons {
+    flex-direction: column;
+  }
+  
+  .action-buttons button {
+    width: 100%;
+  }
+}
