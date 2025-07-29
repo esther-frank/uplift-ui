@@ -1,0 +1,35 @@
+.loginForm {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  background-color: #ffffff;
+  padding: 2rem;
+  border-radius: 8px;
+  width: 75vw !important;
+  max-width: 400px !important;
+}
+
+.formField {
+  border-radius: 50px !important;
+  background-color: #f4f4f4 !important;
+}
+
+.buttonGroup {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 1rem;
+}
+
+.createButton {
+  background-color: #48c9b0 !important;
+  border-radius: 50px !important;
+  border: none !important;
+  font-family: 'Quicksand', sans-serif !important;
+}
+
+.submitButton {
+  background-color: #2ecc71 !important;
+  border-radius: 50px !important;
+  border: none !important;
+}

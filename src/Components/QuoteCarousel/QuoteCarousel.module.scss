@@ -1,0 +1,21 @@
+.carouselContainer {
+  overflow: hidden;
+  width: 80%;
+
+  margin: 0 auto;
+}
+
+.cardContainer {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  gap: 1rem;
+}
+
+.quoteCard {
+  min-width: 25%;
+  flex-shrink: 0;
+  background-color: #FFFFFF;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
