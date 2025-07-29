@@ -1,0 +1,68 @@
+
+:root {
+  /* Font color */
+  --primary-font-color: #000000;
+  --secondary-font-color: #F4F4F4;
+  --accent-font-color: #48C9B0;
+
+  /* Colors */
+  --foreground-color: #000000;
+  --background-color: #f7f6f6;
+  --accent-color: #67482c;
+  --secondary-accent-color: #b58563;
+  --secondary-color: #F4A300;
+
+  --background-color-rgb: 247, 246, 246;
+
+}
+
+
+.navbar {
+  background-color: var(--secondary-color);
+  padding: 1rem;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  height: 17vh;
+  max-height: 120px;
+}
+
+.navbarContainer {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbarLogo {
+  width: 10vw;
+  max-width: 100px;
+  height: auto;
+  object-fit: contain;
+}
+
+.navbarLinks {
+  display: flex;
+  gap: 2rem;
+  padding-right: 10vw;
+}
+
+.navbarLinks a {
+  color: var(--secondary-font-color);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s ease;
+  font-family: sans-serif;
+}
+
+.navbarLinks a:hover {
+  color: var(--secondary-font-color);
+}
+
+.NavTitle{
+  margin-left: 10vw;
+  color: var(--secondary-font-color);
+}

@@ -1,0 +1,16 @@
+// SCSS Variables
+$primary: #48c9b0;
+
+// Global font application
+* {
+  font-family: 'Quicksand', sans-serif;
+}
+
+body {
+  font-family: 'Quicksand', sans-serif;
+}
+
+// CSS Custom Properties (if needed for other purposes)
+:root {
+  --primary-color: #{$primary};
+}
