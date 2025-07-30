@@ -2,9 +2,9 @@ import QuoteCarousel from '../../Components/QuoteCarousel/QuoteCarousel'
 import styles from './Home.module.scss'
 
 interface homeProps {
-  userId: string | null
+  userToken: string | null
 }
-const Home = ({ userId }: homeProps) => {
+const Home = ({ userToken }: homeProps) => {
   
 
   return (

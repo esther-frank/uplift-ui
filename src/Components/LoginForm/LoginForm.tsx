@@ -10,31 +10,54 @@ const LoginForm = ({ handleClick }: LoginFormProps) => {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    // Add authentication logic here
-    // pass username and password to the api for validation
-    console.log('Logging in with:')
-    console.log('Username:', username)
-    console.log('Password:', password)
-    // if successful
-    // store userId in local storage
-    const userId = '456'
-    localStorage.setItem('userId', userId)
-    handleClick()
-    // else show error message
-    // e.g., setError('Invalid username or password')
-  }
+    try {
+      const response = await fetch('http://185.150.1.9:8081/api/auth/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ username, password })
+      })
 
-  const handleCreateAccount = () => {
-    // pass username and password from state to the api for account creation
-    console.log('Creating account for:', username)
-    console.log('With password:', password)
-    // if successful
-    handleClick()
-    // else show error message
-    // e.g., setError('Account creation failed')
+      const token = await response.text()
+
+      if (response.ok && !token.toLowerCase().includes('invalid')) {
+        localStorage.setItem('token', token)
+
+        handleClick()
+      } else {
+        console.log("incorrect")
+      }
+    } catch (err) {
+      console.error(err)
+    }
   }
+  const handleCreateAccount = async () => {
+  try {
+    const response = await fetch('http://185.150.1.9:8081/api/auth/register', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ username, password })
+    })
+
+    const token = await response.text()
+
+    if (response.ok && !token.toLowerCase().includes('exists')) {
+      localStorage.setItem('token', token)
+
+      handleClick()
+    } else {
+      console.log("Username already exists")
+    }
+  } catch (err) {
+    console.error(err)
+  }
+}
+
 
   return (
     <bootstrap.Form
