@@ -16,10 +16,10 @@ export default function QuoteCarousel() {
     { name: "Clap", description: "Clap", Emoji: Emoji4 },
     { name: "Jam", description: "Jam", Emoji: Emoji5 },
     { name: "Palm", description: "Palm", Emoji: Emoji1 },
-    {name:"theo", description:"descript", Emoji: Emoji2}
+    { name:"theo", description:"descript", Emoji: Emoji2 }
   ];
 
-  const visibleCount = 4;
+  const visibleCount = 3;
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -37,10 +37,13 @@ export default function QuoteCarousel() {
     <div className={styles.carouselContainer}>
       <div className={styles.cardContainer}>
         {visibleCards.map((card, index) => (
-          <div key={index} className={styles.quoteCard}>
+          <div
+            key={index}
+            className={`${styles.quoteCard} ${index === 1 ? styles.activeCard : ''}`}
+          >
             <h3>{card.name}</h3>
             <p>{card.description}</p>
-            <img src={card.Emoji}/>
+            <img src={card.Emoji} alt='emoji'/>
           </div>
         ))}
       </div>

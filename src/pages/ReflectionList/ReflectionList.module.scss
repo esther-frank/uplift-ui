@@ -1,0 +1,71 @@
+:root {
+  /* Font color */
+  --primary-font-color: #000000;
+  --secondary-font-color: #f4f4f4;
+  --accent-font-color: #525252;
+
+  /* Colors */
+  --foreground-color: #000000;
+  --background-color: #cdd3db;
+  --accent-color: #cdd3db;
+  --secondary-accent-color: #2ecc71;
+  --secondary-color: #f4f4f4;
+
+}
+
+.pageContent {
+  margin-top: 15vh;
+  width: 100%;
+}
+
+.ListSection {
+  grid-column: 1 / -1; /* Span all columns */
+  justify-content: center;
+  align-items: center;
+  color: var(--primary-font-color);
+  background-color: var(--secondary-font-color);
+  position: relative; 
+  height: 60vh;
+}
+.ListTitle {
+  color: var(--primary-font-color);
+  font-family: var(--font-secondary);
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.List {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px;
+  padding: 10px;
+  box-sizing: border-box;
+  width: 100%;
+  margin: 0 auto;
+  background-color: var(--secondary-font-color);
+  color: var(--primary-font-color);
+  position: absolute;
+  top: 25%;
+  left: 10%;
+  overflow-x: auto;
+}
+.ListHeading1 {
+  grid-column: 1;
+  color: var(--primary-font-color);
+}
+.ListHeading2 {
+  grid-column: 2;
+  color: var(--primary-font-color);
+}
+.ListHeading3 {
+  grid-column: 3;
+  color: var(--primary-font-color);
+}
+.ListContent{
+  justify-content: center;
+  align-items: center;
+  height: 10vh;
+}
