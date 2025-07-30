@@ -41,7 +41,7 @@ const Home = ({ userId }: homeProps) => {
         </div>
 
         <div className={styles.ListSection}>
-          <h1 className={styles.ListTitle}>Reflections List</h1>
+          <h1 className={styles.ListTitle}>Reflection List</h1>
           <div className={styles.List}>
             <div>
               <h1 className={styles.ListHeading1}>Reflection</h1>

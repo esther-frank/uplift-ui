@@ -1,0 +1,128 @@
+/* ReflectionPage specific styles */
+
+.pageContent {
+  margin-top: 15vh;
+  width: 100%;
+}
+.reflectionPage {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto auto auto ;
+  gap: 20px;
+  padding: 20px;
+  max-width: var(--max-width);
+  background-color: var(--background-color);
+  box-sizing: border-box; /* Ensure padding is included in width */
+  overflow-x: hidden;
+}
+
+.reflectionTitleSection{
+  grid-column: 1 / -1;
+  justify-content: center;
+  align-items: center;
+  position: relative; 
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 20vh;
+  display: flex;
+  flex-direction: column;
+}
+.Title{
+  font-family: var(--font-primary);
+  text-align: center;
+  justify-content: center;
+  color: var(--primary-font-color);
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.titleAccent{
+  font-family: var(--font-accent);
+  color: var(--primary-font-color);
+  text-align: center;
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.moodSection{
+   grid-column: 1 / 2 ; 
+  justify-content: center;
+  align-items: center;
+  position: relative; 
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 30vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.reflectionSection{
+  grid-column: 2 / 3 ; 
+  justify-content: center;
+  align-items: center;
+  position: relative; 
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 30vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.moodSelections{
+  
+}
+
+.moodButton {
+  transition: all 0.3s ease;
+  border: 2px solid transparent !important;
+}
+
+.moodButton:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.moodButton.selected {
+  border-color: #0d6efd !important;
+  box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+}
+
+.reflectionTextarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.progressBadge {
+  font-size: 0.9rem;
+  padding: 0.5rem 0.75rem;
+}
+
+.actionButtons {
+  gap: 0.75rem;
+}
+
+@media (max-width: 576px) {
+  .mood-selector {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .mood-button {
+    width: 60px;
+    height: 60px;
+  }
+  
+  .action-buttons {
+    flex-direction: column;
+  }
+  
+  .action-buttons button {
+    width: 100%;
+  }
+}

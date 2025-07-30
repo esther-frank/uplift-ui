@@ -18,6 +18,9 @@ const LoginForm = ({ handleClick }: LoginFormProps) => {
     console.log('Username:', username)
     console.log('Password:', password)
     // if successful
+    // store userId in local storage
+    const userId = '456'
+    localStorage.setItem('userId', userId)
     handleClick()
     // else show error message
     // e.g., setError('Invalid username or password')

@@ -1,68 +1,75 @@
-
 :root {
   /* Font color */
   --primary-font-color: #000000;
-  --secondary-font-color: #F4F4F4;
-  --accent-font-color: #48C9B0;
+  --secondary-font-color: #f4f4f4;
+  --accent-font-color: #525252;
 
   /* Colors */
   --foreground-color: #000000;
-  --background-color: #f7f6f6;
-  --accent-color: #67482c;
-  --secondary-accent-color: #b58563;
-  --secondary-color: #F4A300;
+  --background-color: #cdd3db;
+  --accent-color: #cdd3db;
+  --secondary-accent-color: #2ecc71;
+  --secondary-color: #f4f4f4;
 
   --background-color-rgb: 247, 246, 246;
-
 }
-
 
 .navbar {
   background-color: var(--secondary-color);
-  padding: 1rem;
+  padding-top: 2rem;
   position: fixed;
   top: 0;
   width: 100%;
   z-index: 1000;
   height: 17vh;
   max-height: 120px;
+  border-bottom: 5px solid var(--accent-color);
 }
 
 .navbarContainer {
   max-width: 100%;
-  margin: 0 auto;
-  padding: 0 2rem;
   display: flex;
-  justify-content: space-between;
+  height: auto;
   align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
+}
+
+.leftNavbar {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
 }
 
 .navbarLogo {
-  width: 10vw;
-  max-width: 100px;
-  height: auto;
-  object-fit: contain;
+  width: 8vw;
+  max-width: 200px;
+  padding-top: 0px;
+  padding-left: 20px;
 }
 
 .navbarLinks {
   display: flex;
   gap: 2rem;
-  padding-right: 10vw;
+  position: absolute;
+  margin-left: 9vw;
 }
 
 .navbarLinks a {
-  color: var(--secondary-font-color);
-  text-decoration: none;
+  color: var(--accent-font-color);
   font-weight: 500;
+  text-decoration: none;
+  font-size: xx-large;
   transition: color 0.2s ease;
-  font-family: sans-serif;
 }
 
 .navbarLinks a:hover {
-  color: var(--secondary-font-color);
+  color: var(--primary-font-color);
 }
-
-.NavTitle{
-  margin-left: 10vw;
-  color: var(--secondary-font-color);
+.reflectionButton {
+  background-color: var(--secondary-accent-color);
+  border: none;
+  border-radius: 50px;
+  font-size: x-large;
+  padding: 0.5rem 1.5rem;
 }
