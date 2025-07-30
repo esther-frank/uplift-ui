@@ -6,9 +6,12 @@
 
   /* Colors */
   --foreground-color: #000000;
-  --background-color: #cdd3db;
+  --background-color: #f4f4f4;
   --accent-color: #cdd3db;
   --secondary-accent-color: #2ecc71;
   --secondary-color: #f4f4f4;
+}
 
+body {
+  background-color: var(--background-color);
 }

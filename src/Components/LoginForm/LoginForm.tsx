@@ -1,14 +1,21 @@
 import * as bootstrap from 'react-bootstrap'
 import { useState } from 'react'
 import styles from './LoginForm.module.scss'
+import { useNavigate } from 'react-router-dom'
 
 interface LoginFormProps {
-  handleClick: () => void
+  setUserToken: (userToken: string | null) => void
 }
 
-const LoginForm = ({ handleClick }: LoginFormProps) => {
+const LoginForm = ({ setUserToken }: LoginFormProps) => {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
+  const navigate = useNavigate()
+
+  const handleClick = () => {
+    setUserToken(localStorage.getItem('token'))
+    navigate('/pages/home')
+  }
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -28,36 +35,38 @@ const LoginForm = ({ handleClick }: LoginFormProps) => {
 
         handleClick()
       } else {
-        console.log("incorrect")
+        console.log('incorrect')
       }
     } catch (err) {
       console.error(err)
     }
   }
   const handleCreateAccount = async () => {
-  try {
-    const response = await fetch('http://185.150.1.9:8081/api/auth/register', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ username, password })
-    })
+    try {
+      const response = await fetch(
+        'http://185.150.1.9:8081/api/auth/register',
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ username, password })
+        }
+      )
 
-    const token = await response.text()
+      const token = await response.text()
 
-    if (response.ok && !token.toLowerCase().includes('exists')) {
-      localStorage.setItem('token', token)
+      if (response.ok && !token.toLowerCase().includes('exists')) {
+        localStorage.setItem('token', token)
 
-      handleClick()
-    } else {
-      console.log("Username already exists")
+        handleClick()
+      } else {
+        console.log('Username already exists')
+      }
+    } catch (err) {
+      console.error(err)
     }
-  } catch (err) {
-    console.error(err)
   }
-}
-
 
   return (
     <bootstrap.Form

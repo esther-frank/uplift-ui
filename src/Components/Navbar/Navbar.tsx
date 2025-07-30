@@ -17,8 +17,10 @@ const Navbar = ({ showItems }: NavbarProps) => {
           </Link>
           {showItems && (
             <nav className={styles.navbarLinks}>
-              <a href="/">Home</a>
+              <a href="/pages/Home">Home</a>
               <a href="/pages/Reflection">Reflection</a>
+              <a href="/pages/ReflectionList">Reflection List</a>
+
             </nav>
           )}
         </div>

@@ -7,58 +7,47 @@ import Emoji4 from '../../Assests/Emoji4.svg'
 import Emoji5 from '../../Assests/Emoji5.svg'
 
 
-interface ReflectionListProps {
-  userId: string | null
-}
-
 const ReflectionList = ({ userId, setuserId, setShowNavItems }: LoginProps) => {
   const navigate = useNavigate()
-  const handleClick = () => {
-    setuserId(userId)
-    navigate('reflection/{reflectionId}')
+
+  const handleClick = (card) => {
+    navigate(`reflection/${card.reflectionId}`)
   }
+
   const cardData = [
-    { name: 'Happy', description: 'Happy', Emoji: Emoji1 },
-    { name: 'Sad', description: 'Sad', Emoji: Emoji2 },
-    { name: 'Fun', description: 'Fun', Emoji: Emoji3 },
-    { name: 'Clap', description: 'Clap', Emoji: Emoji4 },
-    { name: 'Jam', description: 'Jam', Emoji: Emoji5 },
-    { name: 'Palm', description: 'Palm', Emoji: Emoji1 },
-    { name: 'theo', description: 'descript', Emoji: Emoji2 }
+    { name: 'Today went well', description: 'Happy', Emoji: Emoji1 , reflectionId: 123 },
+    { name: 'Today went ok', description: 'Sad', Emoji: Emoji2 , reflectionId: 123},
+    { name: 'Today went alright', description: 'Fun', Emoji: Emoji3 , reflectionId: 123},
+    { name: 'Today went badly', description: 'Clap', Emoji: Emoji4 , reflectionId: 123},
+    { name: 'Today went ok', description: 'Jam', Emoji: Emoji5 , reflectionId: 123},
+    { name: 'Today went meh', description: 'Palm', Emoji: Emoji1 , reflectionId: 123},
+    { name: 'Today went poor', description: 'descript', Emoji: Emoji2 , reflectionId: 123}
   ]
+
   return (
     <div className={styles.loginContainer}>
-      <h1>Reflection List</h1>
-      <p onClick={handleClick}>reflection</p>
+
       <div className={styles.ListSection}>
-          <h1 className={styles.ListTitle}>Reflection List</h1>
-          <div className={styles.List}>
-            <div>
-              <h1 className={styles.ListHeading1}>Reflection</h1>
-              {cardData.map((card, index) => (
-                <div key={index} className={styles.ListContent}>
-                  <h3>{card.name}</h3>
-                </div>
-              ))}
-            </div>
-            <div>
-              <h1 className={styles.ListHeading2}>Content</h1>
-              {cardData.map((card, index) => (
-                <div key={index} className={styles.ListContent}>
-                  <p>{card.description}</p>
-                </div>
-              ))}
-            </div>
-            <div>
-              <h1 className={styles.ListHeading3}>Emoji</h1>
-              {cardData.map((card, index) => (
-                <div key={index} className={styles.ListContent}>
-                  <img src={card.Emoji} alt='emoji' />
-                </div>
-              ))}
-            </div>
+        <h1 className={styles.ListTitle}>Reflection List</h1>
+
+        <div className={styles.List}>
+          <div className={styles.ListRowHeader}>
+            <div className={styles.ListHeading}>Reflection</div>
+            <div className={styles.ListHeading}>Content</div>
+            <div className={styles.ListHeading}>Emoji</div>
           </div>
+
+          {cardData.map((card, index) => (
+            <div key={index} className={styles.ListRow} onClick={handleClick} title={card.name}>
+              <div className={styles.ListContent}>{card.name}</div>
+              <div className={styles.ListContent}>{card.description}</div>
+              <div className={styles.ListContent}>
+                <img src={card.Emoji} alt="emoji" className={styles.Emoji} />
+              </div>
+            </div>
+          ))}
         </div>
+      </div>
     </div>
   )
 }

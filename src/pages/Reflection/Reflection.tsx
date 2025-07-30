@@ -1,5 +1,4 @@
-import React, { useState } from 'react'
-import 'bootstrap/dist/css/bootstrap.min.css'
+import { useState } from 'react'
 import styles from './Reflection.module.scss'
 import Emoji1 from '../../Assests/Emoji1.svg'
 import Emoji2 from '../../Assests/Emoji2.svg'
@@ -12,6 +11,7 @@ const MOODS = [Emoji1, Emoji2, Emoji3, Emoji4, Emoji5]
 const Reflection = () => {
   const [reflection, setReflection] = useState<string>('')
   const [selectedMood, setSelectedMood] = useState<string | null>(null)
+  const [sliderValue, setSliderValue] = useState(1) // Slider value from 1 to 10
 
   const isFormValid = reflection.trim() && selectedMood
 
@@ -20,14 +20,13 @@ const Reflection = () => {
       alert('Please fill in both your reflection and mood before saving.')
       return
     }
-
-    console.log('Saved reflection:', { reflection, selectedMood })
-    // TODO: Add API call or local storage logic
+    console.log('Saved reflection:', { reflection, selectedMood, sliderValue })
   }
 
   const handleCancel = () => {
     setReflection('')
     setSelectedMood(null)
+    setSliderValue(1)
   }
 
   return (
@@ -39,46 +38,71 @@ const Reflection = () => {
             Take a moment to reflect on your learning journey.
           </h2>
         </div>
-        {/* Mood Selector */}
+
+        {/* Mood Selector: Row 1, Col 1 */}
         <div className={styles.moodSection}>
           <h5>How are you feeling today?</h5>
           <div className={styles.moodSelections}>
             {MOODS.map((mood, index) => (
-              <img key={index} aria-label={`Select mood: ${mood}`}>
-                {mood}
-              </img>
+              <button
+                key={index}
+                type="button"
+                className={`${styles.moodButton} ${
+                  selectedMood === mood ? styles.selected : ''
+                }`}
+                onClick={() => setSelectedMood(mood)}
+              >
+                <img src={mood} alt={`Mood ${index + 1}`} />
+              </button>
             ))}
           </div>
         </div>
-        {/* Reflection Text Area */}
-        <div className={styles.reflectionSection}>
-          <label htmlFor="reflectionText" className="form-label">
-            Your Reflection
+
+        {/* Slider: Row 1, Col 2 */}
+        <div className={styles.sliderSection}>
+          <label htmlFor="progressSlider">
+            How confident are you feeling <strong>{sliderValue}</strong>
           </label>
+          <input
+            type="range"
+            id="progressSlider"
+            min={1}
+            max={10}
+            step={1}
+            value={sliderValue}
+            onChange={(e) => setSliderValue(Number(e.target.value))}
+            className={styles.slider}
+          />
+        </div>
+
+        {/* Reflection Textarea: Row 2, Col 1 & 2 */}
+        <div className={styles.reflectionSection}>
+          <h3>Your Reflection</h3>
           <textarea
             id="reflectionText"
-            className="form-control reflection-textarea"
+            className={styles.reflectionTextarea}
             rows={6}
             placeholder="Write your thoughts here..."
             value={reflection}
             onChange={(e) => setReflection(e.target.value)}
             aria-describedby="reflectionHelp"
           />
-          <div id="reflectionHelp" className="form-text">
+          <div id="reflectionHelp" className={styles.reflectionHelpText}>
             Share your thoughts about your learning journey today.
           </div>
         </div>
-        <div className="mt-4">
+
+        {/* Progress Section: Row 1 & 2, Col 3 */}
+        <div className={styles.progressSection}>
           <h5>Your Progress</h5>
-          <div className="d-flex gap-3">
-            <span className="badge bg-success progress-badge">
-              7-Day Streak
-            </span>
-            <span className="badge bg-info progress-badge">Reflection Pro</span>
+          <div className={styles.progressBadges}>
+            <span className={styles.progressBadge}>7-Day Streak</span>
+            <span className={styles.progressBadge}>Reflection Pro</span>
           </div>
-        </div>{' '}
-        {/* Action Buttons */}
-        <div className="mt-4 d-flex gap-2 actionButtons">
+        </div>
+
+        {/* Action Buttons: Row 3, Col 1 to 3 */}
+        <div className={`${styles.actionButtons} d-flex`}>
           <button
             className="btn btn-primary"
             onClick={handleSave}
@@ -99,4 +123,5 @@ const Reflection = () => {
     </div>
   )
 }
+
 export default Reflection

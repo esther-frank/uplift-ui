@@ -1,26 +1,28 @@
-/* ReflectionPage specific styles */
+@use '../../App.module.scss';
 
 .pageContent {
-  margin-top: 15vh;
+  padding-top: 90px;
   width: 100%;
 }
+
 .reflectionPage {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: auto auto auto auto ;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: auto auto auto;
   gap: 20px;
   padding: 20px;
   max-width: var(--max-width);
   background-color: var(--background-color);
-  box-sizing: border-box; /* Ensure padding is included in width */
+  box-sizing: border-box;
   overflow-x: hidden;
 }
 
-.reflectionTitleSection{
+/* Title section spans all columns in first row */
+.reflectionTitleSection {
   grid-column: 1 / -1;
   justify-content: center;
   align-items: center;
-  position: relative; 
+  position: relative;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -28,59 +30,100 @@
   display: flex;
   flex-direction: column;
 }
-.Title{
-  font-family: var(--font-primary);
-  text-align: center;
-  justify-content: center;
-  color: var(--primary-font-color);
-  position: absolute;
-  top: 10%;
-  left: 50%;
-  transform: translateX(-50%);
-}
 
-.titleAccent{
-  font-family: var(--font-accent);
-  color: var(--primary-font-color);
-  text-align: center;
-  position: absolute;
-  top: 30%;
-  left: 50%;
-  transform: translateX(-50%);
-}
-.moodSection{
-   grid-column: 1 / 2 ; 
+/* Mood section - Row 1, Col 1 */
+.moodSection {
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
   justify-content: center;
   align-items: center;
-  position: relative; 
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  height: 30vh;
   display: flex;
   flex-direction: column;
 }
 
-.reflectionSection{
-  grid-column: 2 / 3 ; 
-  justify-content: center;
-  align-items: center;
-  position: relative; 
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  height: 30vh;
+/* Slider section - Row 1, Col 2 */
+.sliderSection {
+  grid-column: 2 / 3;
+  grid-row: 1 / 2;
   display: flex;
   flex-direction: column;
-}
-
-// .moodSelections{
+  justify-content: center;
+  padding-left: 20px;
+  height: 400px;
   
-// }
+  label {
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: var(--primary-font-color);
+  }
+}
 
+.slider {
+  width: 100%;
+  cursor: pointer;
+}
+
+/* Reflection textarea - Row 2, Col 1 & 2 */
+.reflectionSection {
+  grid-column: 1 / 3;
+  grid-row: 2 / 3;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 400px;
+}
+
+/* Progress section - Row 1 & 2, Col 3 */
+.progressSection {
+  grid-column: 3 / 4;
+  grid-row: 1 / 3;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  padding-left: 20px;
+  
+  h5 {
+    margin-bottom: 1rem;
+  }
+}
+
+.progressBadges {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.progressBadge {
+  font-size: 0.9rem;
+  padding: 0.5rem 0.75rem;
+  background-color: var(--primary-color);
+  color: white;
+  border-radius: 0.25rem;
+  text-align: center;
+  width: 120px;
+}
+
+/* Action buttons - Row 3, Col 1 to 3 */
+.actionButtons {
+  grid-column: 1 / 4;
+  grid-row: 3 / 4;
+  gap: 0.75rem;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  padding-top: 10px;
+}
+
+/* Mood button styling */
 .moodButton {
   transition: all 0.3s ease;
   border: 2px solid transparent !important;
+  background: none;
+  padding: 5px;
+  cursor: pointer;
+  border-radius: 8px;
 }
 
 .moodButton:hover {
@@ -96,33 +139,17 @@
 .reflectionTextarea {
   resize: vertical;
   min-height: 120px;
+  width: 100%;
+  font-family: inherit;
+  font-size: 1rem;
+  padding: 0.5rem;
+  border-radius: 6px;
+  border: 1px solid var(--secondary-font-color);
+  box-sizing: border-box;
 }
 
-.progressBadge {
-  font-size: 0.9rem;
-  padding: 0.5rem 0.75rem;
-}
-
-.actionButtons {
-  gap: 0.75rem;
-}
-
-@media (max-width: 576px) {
-  .mood-selector {
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .mood-button {
-    width: 60px;
-    height: 60px;
-  }
-  
-  .action-buttons {
-    flex-direction: column;
-  }
-  
-  .action-buttons button {
-    width: 100%;
-  }
+.reflectionHelpText {
+  font-size: 0.8rem;
+  margin-top: 0.25rem;
+  color: var(--secondary-font-color);
 }

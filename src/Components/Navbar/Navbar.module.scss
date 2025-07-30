@@ -1,17 +1,4 @@
-:root {
-  /* Font color */
-  --primary-font-color: #000000;
-  --secondary-font-color: #f4f4f4;
-  --accent-font-color: #525252;
-
-  /* Colors */
-  --foreground-color: #000000;
-  --background-color: #cdd3db;
-  --accent-color: #cdd3db;
-  --secondary-accent-color: #2ecc71;
-  --secondary-color: #f4f4f4;
-
-}
+@use '../../App.module.scss';
 
 .navbar {
   background-color: var(--secondary-color);
@@ -20,7 +7,7 @@
   top: 0;
   width: 100%;
   z-index: 1000;
-  height: 17vh;
+  height: 150px;
   max-height: 120px;
   border-bottom: 5px solid var(--accent-color);
 }

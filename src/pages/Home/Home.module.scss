@@ -1,27 +1,14 @@
-:root {
-  /* Font color */
-  --primary-font-color: #000000;
-  --secondary-font-color: #f4f4f4;
-  --accent-font-color: #525252;
-
-  /* Colors */
-  --foreground-color: #000000;
-  --background-color: #cdd3db;
-  --accent-color: #cdd3db;
-  --secondary-accent-color: #2ecc71;
-  --secondary-color: #f4f4f4;
-
-}
+@use '../../App.module.scss';
 
 .pageContent {
-  margin-top: 15vh;
+  padding-top: 90px;
   width: 100%;
 }
 
 .homepageLayout {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: auto auto auto auto ;
+  grid-template-rows: auto auto auto auto;
   gap: 20px;
   padding: 20px;
   max-width: var(--max-width);
@@ -30,17 +17,16 @@
   overflow-x: hidden;
 }
 .WelcomeSection {
-  grid-column: 1 / 3 ; 
+  grid-column: 1 / 3;
   justify-content: center;
   align-items: center;
-  position: relative; 
+  position: relative;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   height: 600px;
   display: flex;
   flex-direction: column;
-  border: solid 10px;
 }
 .Title {
   font-family: var(--font-primary);
@@ -64,29 +50,25 @@
 .subtitle {
   font-size: 1rem;
   text-align: center;
-  background-color: var(--secondary-color);
   padding: 10px;
   color: var(--primary-font-color);
   font-family: var(--font-primary);
 }
 
-
-.whatIsSection {
- grid-column: 3 / 4 ; 
+.reviewsSection {
+  grid-column: 3 / 4;
   justify-content: center;
   align-items: center;
-  position: relative; 
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  height: 600px;
+  position: relative;
+  max-height: 600px;
   display: flex;
   flex-direction: column;
-  border: solid 10px;
+  background-color: white;
+  margin: 60px;
+  border-radius: 40px;
 }
 /* Second Row: Vision Section */
-.whatIsTitle {
-  font-family: var(--font-primary);
+.reviewsTitle {
   text-align: center;
   justify-content: center;
   color: var(--primary-font-color);
@@ -96,10 +78,9 @@
   transform: translateX(-50%);
 }
 
-.carouselSection{
-  grid-column: 1 /-1 ; 
+.carouselSection {
+  grid-column: 1 /-1;
   text-align: center;
   justify-content: center;
-  background-color: var(--secondary-color);
-  border: solid 10px;
+  border-top: 2px solid var(--accent-color);
 }
