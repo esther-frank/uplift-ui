@@ -1,9 +1,20 @@
-import { useEffect, useState } from 'react'
+import { useState, useEffect } from 'react'
 
+type tokenData = {
+  userToken: string | null
+  setUserToken: (userToken: string | null) => void
+}
 
-const useVerification = ({ userId }: homeProps) => {
-   useEffect(() => {
-    async function tokenVerification() {
+const useVerification = ({ userToken, setUserToken }: tokenData) => {
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean | null>(null) // null means "not checked yet"
+
+  useEffect(() => {
+    if (!userToken) {
+      setIsLoggedIn(false)
+      return
+    }
+
+    const tokenVerification = async () => {
       try {
         const response = await fetch(
           'http://185.150.1.9:8081/api/auth/verify',
@@ -11,7 +22,7 @@ const useVerification = ({ userId }: homeProps) => {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
-              Authorization: `Bearer ${localStorage.getItem('token')}`
+              Authorization: `Bearer ${userToken}`
             }
           }
         )
@@ -21,23 +32,25 @@ const useVerification = ({ userId }: homeProps) => {
         if (response.ok) {
           localStorage.setItem('userObject', JSON.stringify(userData))
           console.log('token good')
+          setIsLoggedIn(true)
         } else {
           setUserToken(null)
           localStorage.setItem('token', '')
           console.log('token invalid')
+          setIsLoggedIn(false)
         }
       } catch (err) {
         setUserToken(null)
         localStorage.setItem('token', '')
         console.error(err)
+        setIsLoggedIn(false)
       }
     }
+
     tokenVerification()
-  }, [])
+  }, [userToken, setUserToken])
 
-  return (
-
-  )
+  return isLoggedIn // boolean | null
 }
 
-export default Home
+export default useVerification

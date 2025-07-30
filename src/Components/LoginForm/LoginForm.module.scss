@@ -24,14 +24,14 @@
 }
 
 .createButton {
-  background-color: #48c9b0 !important;
+  background-color: var(--teal) !important;
   border-radius: 50px !important;
   border: none !important;
   font-family: 'Quicksand', sans-serif !important;
 }
 
 .submitButton {
-  background-color: #2ecc71 !important;
+  background-color: var(--secondary-accent-color) !important;
   border-radius: 50px !important;
   border: none !important;
 }

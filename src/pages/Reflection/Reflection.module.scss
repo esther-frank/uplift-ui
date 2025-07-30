@@ -80,9 +80,13 @@
   grid-row: 1 / 3;
   display: flex;
   flex-direction: column;
-  justify-content: start;
-  align-items: center;
   padding-left: 20px;
+  padding-top: 30px;
+  height: 700px;
+  align-items: center;
+  background-color: white;
+  margin: 60px;
+  border-radius: 40px;
   
   h5 {
     margin-bottom: 1rem;
@@ -95,6 +99,14 @@
   gap: 10px;
 }
 
+.streakFlames {
+  display: flex;
+  gap: 8px;
+  width: 20px;
+  justify-content: center;
+  align-items: center;
+  height: 20px;
+}
 .progressBadge {
   font-size: 0.9rem;
   padding: 0.5rem 0.75rem;

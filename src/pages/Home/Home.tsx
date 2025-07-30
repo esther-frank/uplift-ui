@@ -1,16 +1,23 @@
 import QuoteCarousel from '../../Components/QuoteCarousel/QuoteCarousel'
 import styles from './Home.module.scss'
+import useVerification from '../../Hooks/useVerification'
+import { useNavigate } from 'react-router-dom'
 
 interface homeProps {
   userToken: string | null
+  setUserToken: (userToken: string | null) => void
 }
-const Home = ({ userToken }: homeProps) => {
-  
+const Home = ({ userToken, setUserToken }: homeProps) => {
+  const navigate = useNavigate()
+
+  const isLoggedIn = useVerification({ userToken, setUserToken })
+  if (!isLoggedIn) {
+    navigate('/')
+  }
 
   return (
     <div className={styles.pageContent}>
       <main className={styles.homepageLayout}>
-
         <div className={styles.WelcomeSection}>
           <h2 className={styles.Title}>What is Uplift?</h2>
           <h3 className={styles.subtitle}>hi{userToken}</h3>
@@ -24,7 +31,6 @@ const Home = ({ userToken }: homeProps) => {
         <div className={styles.carouselSection}>
           <QuoteCarousel />
         </div>
-
       </main>
     </div>
   )

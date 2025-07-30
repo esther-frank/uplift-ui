@@ -17,10 +17,10 @@ function App() {
     <Router>
       <Navbar showItems={!!userToken} />
       <Routes>
-        <Route path="/" element={<Login setUserToken={setUserToken} />} />
-        <Route path="/pages/home" element={<Home userToken={userToken} />} />
-        <Route path="/pages/reflection" element={<Reflection />} />
-        <Route path="/pages/reflectionList" element={<ReflectionList />} />
+        <Route path="/" element={<Login userToken={userToken} setUserToken={setUserToken} />} />
+        <Route path="/pages/home" element={<Home userToken={userToken} setUserToken={setUserToken} />} />
+        <Route path="/pages/reflection" element={<Reflection userToken={userToken} setUserToken={setUserToken}  />} />
+        <Route path="/pages/reflectionList" element={<ReflectionList userToken={userToken} setUserToken={setUserToken} />} />
       </Routes>
     </Router>
   )

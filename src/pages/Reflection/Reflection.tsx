@@ -1,20 +1,39 @@
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import useVerification from '../../Hooks/useVerification'
 import styles from './Reflection.module.scss'
 import Emoji1 from '../../Assests/Emoji1.svg'
 import Emoji2 from '../../Assests/Emoji2.svg'
 import Emoji3 from '../../Assests/Emoji3.svg'
 import Emoji4 from '../../Assests/Emoji4.svg'
 import Emoji5 from '../../Assests/Emoji5.svg'
+import StreakFlame from '../../Assests/StreakFlame.svg'
 
 const MOODS = [Emoji1, Emoji2, Emoji3, Emoji4, Emoji5]
 
-const Reflection = () => {
+interface reflectionProps {
+  userToken: string | null
+  setUserToken: (userToken: string | null) => void
+}
+const Reflection = ({ userToken, setUserToken }: reflectionProps) => {
   const [reflection, setReflection] = useState<string>('')
   const [selectedMood, setSelectedMood] = useState<string | null>(null)
   const [sliderValue, setSliderValue] = useState(1) // Slider value from 1 to 10
 
+  const navigate = useNavigate()
+
   const isFormValid = reflection.trim() && selectedMood
 
+  const isLoggedIn = useVerification({ userToken, setUserToken })
+  if (!isLoggedIn) {
+    navigate('/')
+  }
+
+  const DaysOfStreak = 5;
+
+const streak = Array.from({ length: DaysOfStreak }, (_, i) => (
+  <img key={i} src={StreakFlame} alt="streak flame"/>
+));
   const handleSave = () => {
     if (!isFormValid) {
       alert('Please fill in both your reflection and mood before saving.')
@@ -98,6 +117,9 @@ const Reflection = () => {
           <div className={styles.progressBadges}>
             <span className={styles.progressBadge}>7-Day Streak</span>
             <span className={styles.progressBadge}>Reflection Pro</span>
+            <div className={styles.streakFlames}>
+               {streak}
+            </div>
           </div>
         </div>
 

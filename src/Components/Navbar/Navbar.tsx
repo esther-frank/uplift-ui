@@ -12,7 +12,7 @@ const Navbar = ({ showItems }: NavbarProps) => {
       <div className={styles.navbarContainer}>
         <div className={styles.leftNavbar}>
           {/* Logo */}
-          <Link to="/" className={styles.navbarLogoLink}>
+          <Link to={showItems ? "/pages/home" : "/"} className={styles.navbarLogoLink}>
             <img className={styles.navbarLogo} src={Uplift1} alt="logo" />
           </Link>
           {showItems && (
