@@ -20,9 +20,9 @@ export default function ChartSection() {
     
     if (!token || !userData) return;
 
-    const { id: userId } = JSON.parse(userData);
+    const { userId } = JSON.parse(userData);
 
-    fetch(`http://185.150.1.9:8081/api/users/reflection/${userId}`, {
+    fetch(`http://185.150.1.9:8081/api/users/reflections/${userId}`, {
       headers: {
         "Authorization": `Bearer ${token}`,
       }

@@ -26,7 +26,7 @@ const useGetBadges = ({ userId, userToken }: UseReflectionsListProps) => {
 
       try {
         const response = await fetch(
-          `http://185.150.1.9:8081/api/users/badges/7`,
+          `http://185.150.1.9:8081/api/users/badges/${userId}`,
           {
             method: 'GET',
             headers: {

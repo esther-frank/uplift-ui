@@ -27,7 +27,7 @@ const useVerification = ({ userToken, setUserToken }: tokenData) => {
           }
         )
 
-        const userData = await response.text()
+        const userData = await response.json()
 
         if (response.ok) {
           localStorage.setItem('userObject', JSON.stringify(userData))

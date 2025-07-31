@@ -9,13 +9,13 @@ import Emoji2 from '../../Assests/Emoji2.svg'
 import Emoji3 from '../../Assests/Emoji3.svg'
 import Emoji4 from '../../Assests/Emoji4.svg'
 import Emoji5 from '../../Assests/Emoji5.svg'
-import Badge1 from '../../Assests/badge1.svg'
-import Badge2 from '../../Assests/badge2.svg'
-import Badge3 from '../../Assests/badge3.svg'
-import Badge4 from '../../Assests/badge4.svg'
-import Badge5 from '../../Assests/badge5.svg'
-import Badge6 from '../../Assests/badge6.svg'
-import Badge7 from '../../Assests/badge7.svg'
+import badge1 from '../../Assests/badge1.svg'
+import badge2 from '../../Assests/badge2.svg'
+import badge3 from '../../Assests/badge3.svg'
+import badge4 from '../../Assests/badge4.svg'
+import badge5 from '../../Assests/badge5.svg'
+import badge6 from '../../Assests/badge6.svg'
+import badge7 from '../../Assests/badge7.svg'
 import useSaveReflection from '../../Hooks/useSaveReflection'
 
 const MOODS = [Emoji1, Emoji2, Emoji3, Emoji4, Emoji5]
@@ -64,13 +64,13 @@ const Reflection = ({ userId, userToken, setUserToken }: reflectionProps) => {
 }))
 
 const badgeMap: Record<string, string> = {
-  Badge1,
-  Badge2,
-  Badge3,
-  Badge4,
-  Badge5,
-  Badge6,
-  Badge7,
+  badge1,
+  badge2,
+  badge3,
+  badge4,
+  badge5,
+  badge6,
+  badge7,
 }
  console.log(badgeData)
 
@@ -173,6 +173,7 @@ const badgeElements = badgeData.map((badge, index) => {
             <h4>Reflection Title</h4>
             <div>
               <input
+                required
                 value={reflectionTitle}
                 onChange={(e) => setReflectionTitle(e.target.value)}
                 placeholder="Today Was ..."
@@ -181,6 +182,7 @@ const badgeElements = badgeData.map((badge, index) => {
             </div>
           </div>
           <textarea
+            required
             id="reflectionText"
             className={styles.reflectionTextarea}
             rows={6}
@@ -198,8 +200,6 @@ const badgeElements = badgeData.map((badge, index) => {
         <div className={styles.progressSection}>
           <h5>Your Progress</h5>
           <div className={styles.progressBadges}>
-            <span className={styles.progressBadge}>7-Day Streak</span>
-            <span className={styles.progressBadge}>Reflection Pro</span>
             <div className={styles.streakFlames}>{badgeElements}</div>
           </div>
         </div>

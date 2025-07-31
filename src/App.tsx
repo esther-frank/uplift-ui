@@ -15,9 +15,9 @@ function App() {
 
   const userData = localStorage.getItem('userObject')
   const jsonUserData = userData ? JSON.parse(userData) : null
-  const doubleJsonUserData = JSON.parse(jsonUserData)
+  // const doubleJsonUserData = JSON.parse(jsonUserData)
 
-  const userId = doubleJsonUserData?.userId || null
+  const userId = jsonUserData?.userId || null
 
   return (
     <Router>
