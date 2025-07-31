@@ -68,6 +68,7 @@ export default function ChartSection() {
                   legend: { position: "bottom" },
                   colors: ["#2ecc71"],
                   backgroundColor: "transparent",
+                  pointSize: 6,
                   hAxis: {
                     title: "Date",
                     format: "MMM d, HH:mm",
