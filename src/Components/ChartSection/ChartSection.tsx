@@ -15,12 +15,18 @@ export default function ChartSection() {
   const [data, setData] = useState<any[][]>([["Date", "Confidence", { type: "string", role: "tooltip" }]]);
 
   useEffect(() => {
+    const token = localStorage.getItem("token");
     const userData = localStorage.getItem("userObject");
-    if (!userData) return;
+    
+    if (!token || !userData) return;
 
     const { id: userId } = JSON.parse(userData);
 
-    fetch(`http://185.150.1.9:8081/api/users/reflection/${userId}`)
+    fetch(`http://185.150.1.9:8081/api/users/reflection/${userId}`, {
+      headers: {
+        "Auhorization": `Bear ${token}`,
+      }
+    })
       .then((res) => res.json())
       .then((reflections: Reflection[]) => {
         const chartData = [["Date", "Confidence", { type: "string", role: "tooltip" }]];
