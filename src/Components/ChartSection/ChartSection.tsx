@@ -24,7 +24,7 @@ export default function ChartSection() {
 
     fetch(`http://185.150.1.9:8081/api/users/reflection/${userId}`, {
       headers: {
-        "Auhorization": `Bear ${token}`,
+        "Authorization": `Bearer ${token}`,
       }
     })
       .then((res) => res.json())
