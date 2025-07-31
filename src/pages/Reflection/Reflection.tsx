@@ -198,8 +198,11 @@ const badgeElements = badgeData.map((badge, index) => {
 
         {/* Progress Section */}
         <div className={styles.progressSection}>
-          <h5>Your Progress</h5>
+          <h5>Earned Badges</h5>
+        
           <div className={styles.progressBadges}>
+             <span className={styles.progressBadge}>7-Day Streak</span>
+            <span className={styles.progressBadge}>Reflection Pro</span>
             <div className={styles.streakFlames}>{badgeElements}</div>
           </div>
         </div>

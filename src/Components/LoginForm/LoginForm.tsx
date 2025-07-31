@@ -68,6 +68,10 @@ const LoginForm = ({ setUserToken }: LoginFormProps) => {
     }
   }
 
+  const handleForgotPassword = () => {
+    alert('Please contact support to reset your password.')
+  }
+
   return (
     <bootstrap.Form
       className={styles.loginForm}
@@ -97,6 +101,7 @@ const LoginForm = ({ setUserToken }: LoginFormProps) => {
             setPassword(e.target.value)
           }}
         />
+        <a onClick={handleForgotPassword}>Forgot Password?</a>
       </bootstrap.Form.Group>
 
       <div className={styles.buttonGroup}>

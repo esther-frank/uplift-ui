@@ -1,48 +1,54 @@
-import { useEffect, useState } from "react";
-import { Chart } from "react-google-charts";
-import styles from "./ChartSection.module.scss";
-import useVerification from "../../Hooks/useVerification";
+import { useEffect, useState } from 'react'
+import { Chart } from 'react-google-charts'
+import styles from './ChartSection.module.scss'
 
 type Reflection = {
-  reflectionId: number;
-  userId: number;
-  reflectionText: string;
-  confidenceRating: number;
-  createdAt: string;
-};
+  reflectionId: number
+  userId: number
+  reflectionText: string
+  confidenceRating: number
+  createdAt: string
+}
 
 export default function ChartSection() {
-  const [data, setData] = useState<any[][]>([["Date", "Confidence", { type: "string", role: "tooltip" }]]);
+  const [data, setData] = useState<
+    (string | Date | number | { type: string; role: string })[][]
+  >([['Date', 'Confidence', { type: 'string', role: 'tooltip' }]])
 
   useEffect(() => {
-    const token = localStorage.getItem("token");
-    const userData = localStorage.getItem("userObject");
-    
-    if (!token || !userData) return;
+    const token = localStorage.getItem('token')
+    const userData = localStorage.getItem('userObject')
 
-    const { userId } = JSON.parse(userData);
+    if (!token || !userData) return
+
+    const { userId } = JSON.parse(userData)
 
     fetch(`http://185.150.1.9:8081/api/users/reflections/${userId}`, {
       headers: {
-        "Authorization": `Bearer ${token}`,
+        Authorization: `Bearer ${token}`
       }
     })
       .then((res) => res.json())
       .then((reflections: Reflection[]) => {
-        const chartData = [["Date", "Confidence", { type: "string", role: "tooltip" }]];
+        const chartData: (
+          | string
+          | Date
+          | number
+          | { type: string; role: string }
+        )[][] = [['Date', 'Confidence', { type: 'string', role: 'tooltip' }]]
         reflections.forEach((r) => {
           chartData.push([
             new Date(r.createdAt),
             r.confidenceRating,
-            r.reflectionText || "(No reflection)",
-          ]);
-        });
-        setData(chartData);
+            r.reflectionText || '(No reflection)'
+          ])
+        })
+        setData(chartData)
       })
       .catch((err) => {
-        console.error("Failed to fetch reflections:", err);
-      });
-  }, []);
+        console.error('Failed to fetch reflections:', err)
+      })
+  }, [])
 
   return (
     <div className={`container ${styles.chartSection}`}>
@@ -51,7 +57,9 @@ export default function ChartSection() {
           <div className={styles.infoPanel}>
             <h2>Reflection Confidence</h2>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris mattis condimentum eros, quis tempor felis fermentum vel. Maecenas convallis sollicitudin fringilla. Vestibulum rhoncus auctor nisi vel bibendum. Mauris accumsan id est a aliquet. Mauris in euismod mi, et tincidunt tortor. Sed justo mauris, dignissim vel augue non, fermentum ultrices elit.
+              This chart displays your confidence ratings over time based on
+              your reflections. Each point represents a reflection, with the
+              date and confidence level indicated.
             </p>
           </div>
         </div>
@@ -65,20 +73,20 @@ export default function ChartSection() {
                 height="400px"
                 data={data}
                 options={{
-                  legend: { position: "bottom" },
-                  colors: ["#2ecc71"],
-                  backgroundColor: "transparent",
+                  legend: { position: 'bottom' },
+                  colors: ['#2ecc71'],
+                  backgroundColor: 'transparent',
                   pointSize: 6,
                   hAxis: {
-                    title: "Date",
-                    format: "MMM d, HH:mm",
+                    title: 'Date',
+                    format: 'MMM d, HH:mm'
                   },
                   vAxis: {
-                    title: "Confidence",
+                    title: 'Confidence',
                     minValue: 0,
-                    maxValue: 5,
+                    maxValue: 5
                   },
-                  tooltip: { isHtml: true },
+                  tooltip: { isHtml: true }
                 }}
               />
             ) : (
@@ -88,5 +96,5 @@ export default function ChartSection() {
         </div>
       </div>
     </div>
-  );
+  )
 }
