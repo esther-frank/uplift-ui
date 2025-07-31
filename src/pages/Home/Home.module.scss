@@ -84,3 +84,10 @@
   justify-content: center;
   border-top: 2px solid var(--accent-color);
 }
+
+.chartSection {
+  grid-column: 1 /-1;
+  text-align: center;
+  justify-content: center;
+  border-top: 2px solid var(--accent-color);
+}

@@ -1,3 +1,4 @@
+import ChartSection from '../../Components/ChartSection/ChartSection'
 import QuoteCarousel from '../../Components/QuoteCarousel/QuoteCarousel'
 import styles from './Home.module.scss'
 import useVerification from '../../Hooks/useVerification'
@@ -31,6 +32,11 @@ const Home = ({ userToken, setUserToken }: homeProps) => {
         <div className={styles.carouselSection}>
           <QuoteCarousel />
         </div>
+
+        <div className={styles.chartSection}>
+          <ChartSection />
+        </div>
+
       </main>
     </div>
   )
