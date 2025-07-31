@@ -1,0 +1,66 @@
+###Get Users Streak
+GET http://localhost:8080/api/users/latest-streak/1
+
+
+###Add User Reflection to the database
+POST http://localhost:8080/api/users/create-reflection/7
+Content-Type: application/json
+
+{
+  "userId": 7,
+  "reflectionTitle": "Title2",
+  "reflectionText": "Good Bye Good Bye Good Bye",
+  "confidenceRating": 8,
+  "emoji": "😊",
+  "image_attachment": null
+}
+
+
+
+###Add Personal Motivational Message to the database
+POST http://localhost:8080/api/users/create-message/personal/7
+Content-Type: application/json
+
+{
+  "messageText": "A Motivational Message",
+  "messageAuthor": "user7",
+  "userId": 7
+}
+
+
+###Return All Reflections for user- Token required for this endpoint, we have token for user7
+GET http://localhost:8080/api/users/reflection/7
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ6b2hpcnVsLmlzbGFtIiwiaWF0IjoxNzUzODg3MzMxLCJleHAiOjE3NTM5NzM3MzF9.H8aCKjn5_QFoAwfXyOoXnqUob_o-UQGhwsKRMtFyP70
+
+
+
+###Add General Motivational Message to the database
+POST http://localhost:8080/api/users/create-message/general
+Content-Type: application/json
+
+{
+  "messageText": " Another Famous General Quote",
+  "messageAuthor": " Another Famous Person",
+  "userId": 0
+}
+
+
+###Return all reflections for user
+GET http://localhost:8080/api/users/reflections/1
+
+
+###Return personal and general motivational messages for user
+GET http://localhost:8080/api/users/messages/personal/0
+
+
+
+###Return Random Motivational Message
+GET http://localhost:8080/api/users/message/random/1
+
+
+###Get badges for user
+GET http://localhost:8080/api/users/badges/1
+
+###
+
+Content-Type: application/json

@@ -13,14 +13,38 @@ function App() {
     localStorage.getItem('token')
   )
 
+  const userData = localStorage.getItem('userObject')
+  const jsonUserData = userData ? JSON.parse(userData) : null
+  const doubleJsonUserData = JSON.parse(jsonUserData)
+
+  const userId = doubleJsonUserData?.userId || null
+
   return (
     <Router>
       <Navbar showItems={!!userToken} />
       <Routes>
-        <Route path="/" element={<Login userToken={userToken} setUserToken={setUserToken} />} />
-        <Route path="/pages/home" element={<Home userToken={userToken} setUserToken={setUserToken} />} />
-        <Route path="/pages/reflection" element={<Reflection userToken={userToken} setUserToken={setUserToken}  />} />
-        <Route path="/pages/reflectionList" element={<ReflectionList userToken={userToken} setUserToken={setUserToken} />} />
+        <Route
+          path="/"
+          element={<Login userToken={userToken} setUserToken={setUserToken} />}
+        />
+        <Route
+          path="/pages/home"
+          element={<Home userToken={userToken} setUserToken={setUserToken} />}
+        />
+        <Route
+          path="/pages/reflection"
+          element={
+            <Reflection
+              userId={userId}
+              userToken={userToken}
+              setUserToken={setUserToken}
+            />
+          }
+        />
+        <Route
+          path="/pages/reflectionList"
+          element={<ReflectionList userId={userId} userToken={userToken} />}
+        />
       </Routes>
     </Router>
   )

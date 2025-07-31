@@ -1,8 +1,11 @@
 @use '../../App.module.scss';
 
-.loginContainer {
-  padding-top: 15vh;
+
+.pageContent {
+  padding-top: 90px;
   width: 100%;
+  height: 100vh;
+  background-color: var(--secondary-font-color);
 }
 
 .ListSection {
@@ -35,7 +38,7 @@
 .ListRowHeader,
 .ListRow {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   padding: 10px 0;
   align-items: center;
   text-align: center;

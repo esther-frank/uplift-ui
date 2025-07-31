@@ -1,37 +1,38 @@
-import { useEffect, useState } from "react";
-import styles from "./QuoteCarousel.module.scss";
-import Emoji1 from '../../Assests/Emoji1.svg'
-import Emoji2 from '../../Assests/Emoji2.svg'
-import Emoji3 from '../../Assests/Emoji3.svg'
-import Emoji4 from '../../Assests/Emoji4.svg'
-import Emoji5 from '../../Assests/Emoji5.svg'
+import { useEffect, useState } from 'react'
+import useGetMessages from '../../Hooks/useGetMessages'
+import styles from './QuoteCarousel.module.scss'
 
 export default function QuoteCarousel() {
-  const [startIndex, setStartIndex] = useState(0);
+  const [startIndex, setStartIndex] = useState(0)
 
-  const cardData = [
-    { name: "Happy", description: "Happy", Emoji: Emoji1},
-    { name: "Sad", description: "Sad", Emoji: Emoji2 },
-    { name: "Fun", description: "Fun", Emoji: Emoji3 },
-    { name: "Clap", description: "Clap", Emoji: Emoji4 },
-    { name: "Jam", description: "Jam", Emoji: Emoji5 },
-    { name: "Palm", description: "Palm", Emoji: Emoji1 },
-    { name:"theo", description:"descript", Emoji: Emoji2 }
-  ];
+  const { messages, error } = useGetMessages()
 
-  const visibleCount = 3;
+  const cardData = messages.map((message) => ({
+    messageText: message.messageText,
+    messageAuthor: message.messageAuthor
+  }))
+
+  const visibleCount = 3
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setStartIndex((prevIndex) => (prevIndex + 1) % cardData.length);
-    }, 3000);
+      setStartIndex((prevIndex) => (prevIndex + 1) % cardData.length)
+    }, 3000)
 
-    return () => clearInterval(interval);
-  }, [cardData.length]);
+    return () => clearInterval(interval)
+  }, [cardData.length])
+
+  if (error) {
+    return <div className={styles.errorMessage}>There was an error fetching messages, please try again later.</div>
+  }
+
+  if (cardData.length === 0) {
+    return <div className={styles.noMessages}>No messages available</div>
+  }
 
   const visibleCards = Array.from({ length: visibleCount }, (_, i) => {
-    return cardData[(startIndex + i) % cardData.length];
-  });
+    return cardData[(startIndex + i) % cardData.length]
+  })
 
   return (
     <div className={styles.carouselContainer}>
@@ -41,12 +42,11 @@ export default function QuoteCarousel() {
             key={index}
             className={`${styles.quoteCard} ${index === 1 ? styles.activeCard : ''}`}
           >
-            <h3>{card.name}</h3>
-            <p>{card.description}</p>
-            <img src={card.Emoji} alt='emoji'/>
+            <h3>{card.messageText}</h3>
+            <p>{card.messageAuthor}</p>
           </div>
         ))}
       </div>
     </div>
-  );
+  )
 }
