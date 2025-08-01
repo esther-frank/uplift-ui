@@ -14,6 +14,7 @@ const Home = ({ userToken, setUserToken }: homeProps) => {
   const isLoggedIn = useVerification({ userToken, setUserToken })
   if (!isLoggedIn) {
     navigate('/')
+    return null
   }
 
   return (
