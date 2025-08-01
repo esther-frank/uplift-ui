@@ -7,12 +7,21 @@ interface NavbarProps {
   showItems: boolean
 }
 const Navbar = ({ showItems }: NavbarProps) => {
+  const handleLogout = () => {
+    localStorage.removeItem('token')
+    localStorage.removeItem('userObject')
+    window.location.href = '/'
+  }
+
   return (
     <header className={styles.navbar}>
       <div className={styles.navbarContainer}>
         <div className={styles.leftNavbar}>
           {/* Logo */}
-          <Link to={showItems ? "/pages/home" : "/"} className={styles.navbarLogoLink}>
+          <Link
+            to={showItems ? '/pages/home' : '/'}
+            className={styles.navbarLogoLink}
+          >
             <img className={styles.navbarLogo} src={Uplift1} alt="logo" />
           </Link>
           {showItems && (
@@ -20,17 +29,28 @@ const Navbar = ({ showItems }: NavbarProps) => {
               <a href="/pages/Home">Home</a>
               <a href="/pages/Reflection">Reflection</a>
               <a href="/pages/ReflectionList">Reflection List</a>
-
             </nav>
           )}
         </div>
-        <bootstrap.Button
-          variant="primary"
-          type="submit"
-          className={styles.reflectionButton}
-        >
-          Reflection Pro
-        </bootstrap.Button>
+        <div className={styles.rightNavbar}>
+          {showItems && (
+            <bootstrap.Button
+              variant="primary"
+              type="submit"
+              className={styles.logoutButton}
+              onClick={handleLogout}
+            >
+              Log out
+            </bootstrap.Button>
+          )}
+          <bootstrap.Button
+            variant="primary"
+            type="submit"
+            className={styles.reflectionButton}
+          >
+            Reflection Pro
+          </bootstrap.Button>
+        </div>
       </div>
     </header>
   )
