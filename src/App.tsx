@@ -7,6 +7,7 @@ import Reflection from './pages/Reflection/Reflection'
 import Home from './pages/Home/Home'
 import Navbar from './Components/Navbar/Navbar'
 import ReflectionList from './pages/ReflectionList/ReflectionList'
+import ReflectionPage from './pages/ReflectionPage/ReflectionPage'
 
 function App() {
   const [userToken, setUserToken] = useState<string | null>(
@@ -45,6 +46,7 @@ function App() {
           path="/pages/reflectionList"
           element={<ReflectionList userId={userId} userToken={userToken} />}
         />
+        <Route path="/pages/reflectionList/:id" element={<ReflectionPage />} />
       </Routes>
     </Router>
   )

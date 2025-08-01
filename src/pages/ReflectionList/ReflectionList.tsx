@@ -20,16 +20,18 @@ const ReflectionList = ({ userId, userToken }: reflectionListProps) => {
   const { reflections, error } = useReflectionsList({ userId, userToken })
 
   const handleClick = (reflectionId: number) => {
-    navigate(`reflection/${reflectionId}`)
+    navigate(`${reflectionId}`)
   }
 
-  const cardData: CardData[] = reflections.map((reflection) => ({
-    title: reflection.reflectionTitle,
-    description: reflection.reflectionText,
-    emoji: reflection.emoji || '',
-    confidenceRating: reflection.confidenceRating,
-    reflectionId: reflection.reflectionId
-  })).reverse()
+  const cardData: CardData[] = reflections
+    .map((reflection) => ({
+      title: reflection.reflectionTitle,
+      description: reflection.reflectionText,
+      emoji: reflection.emoji || '',
+      confidenceRating: reflection.confidenceRating,
+      reflectionId: reflection.reflectionId
+    }))
+    .reverse()
 
   if (error) {
     return (

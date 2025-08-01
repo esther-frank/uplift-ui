@@ -1,0 +1,18 @@
+@use '../../App.module.scss';
+
+.underConstruction {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.backButton {
+  border-radius: 50px !important;
+  padding: 10px 20px !important;
+  background-color: var(--teal) !important;
+  color: white !important;
+  border: none !important;
+  font-size: 1.2rem !important;
+}
