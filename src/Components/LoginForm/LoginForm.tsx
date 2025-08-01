@@ -20,13 +20,16 @@ const LoginForm = ({ setUserToken }: LoginFormProps) => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     try {
-      const response = await fetch('http://185.150.1.9:8081/api/auth/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ username, password })
-      })
+      const response = await fetch(
+        `${import.meta.env.VITE_LOCAL_API_URL}/auth/login`,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ username, password })
+        }
+      )
 
       const token = await response.text()
 
@@ -44,7 +47,7 @@ const LoginForm = ({ setUserToken }: LoginFormProps) => {
   const handleCreateAccount = async () => {
     try {
       const response = await fetch(
-        'http://185.150.1.9:8081/api/auth/register',
+        `${import.meta.env.VITE_LOCAL_API_URL}/auth/register`,
         {
           method: 'POST',
           headers: {

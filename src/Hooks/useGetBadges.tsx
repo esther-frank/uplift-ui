@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react'
 
 interface BadgeResponse {
-    badgeId: number;
-    badgeTitle: string; 
-    badgeImage: string;
+  badgeId: number
+  badgeTitle: string
+  badgeImage: string
 }
 
 interface UseReflectionsListProps {
@@ -26,13 +26,13 @@ const useGetBadges = ({ userId, userToken }: UseReflectionsListProps) => {
 
       try {
         const response = await fetch(
-          `http://185.150.1.9:8081/api/users/badges/${userId}`,
+          `${import.meta.env.VITE_LOCAL_API_URL}/users/badges/${userId}`,
           {
             method: 'GET',
             headers: {
               'Content-Type': 'application/json',
-              Authorization: `Bearer ${userToken}`,
-            },
+              Authorization: `Bearer ${userToken}`
+            }
           }
         )
 
@@ -45,7 +45,8 @@ const useGetBadges = ({ userId, userToken }: UseReflectionsListProps) => {
         const data: BadgeResponse[] = await response.json()
         setBadges(data)
       } catch (err) {
-        const errorMessage = err instanceof Error ? err.message : 'Unknown error'
+        const errorMessage =
+          err instanceof Error ? err.message : 'Unknown error'
         setError(errorMessage)
         console.error(err)
       }

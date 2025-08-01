@@ -20,23 +20,23 @@ const useGetMessages = () => {
   useEffect(() => {
     const getMessages = async () => {
       setError(null)
-      
-      const token = localStorage.getItem("token");
-      const userData = localStorage.getItem("userObject");
-    
-      if (!token || !userData) return;
 
-      const { userId } = JSON.parse(userData);
+      const token = localStorage.getItem('token')
+      const userData = localStorage.getItem('userObject')
+
+      if (!token || !userData) return
+
+      const { userId } = JSON.parse(userData)
 
       try {
         const response = await fetch(
           // user 1 owns the generic messages
-          `http://185.150.1.9:8081/api/users/messages/personal/${userId}`,
+          `${import.meta.env.VITE_LOCAL_API_URL}/users/messages/personal/${userId}`,
           {
             method: 'GET',
             headers: {
               'Content-Type': 'application/json',
-              "Authorization": `Bearer ${token}`,
+              Authorization: `Bearer ${token}`
             }
           }
         )

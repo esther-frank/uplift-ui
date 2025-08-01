@@ -29,7 +29,7 @@ const useSaveReflection = ({ userToken }: useSaveReflectionProps) => {
 
       try {
         const response = await fetch(
-          `http://185.150.1.9:8081/api/users/create-reflection/${data.userId}`,
+          `${import.meta.env.VITE_LOCAL_API_URL}/users/create-reflection/${data.userId}`,
           {
             method: 'POST',
             headers: {

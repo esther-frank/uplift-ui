@@ -23,7 +23,7 @@ export default function ChartSection() {
 
     const { userId } = JSON.parse(userData)
 
-    fetch(`http://185.150.1.9:8081/api/users/reflections/${userId}`, {
+    fetch(`${import.meta.env.VITE_LOCAL_API_URL}/users/reflections/${userId}`, {
       headers: {
         Authorization: `Bearer ${token}`
       }

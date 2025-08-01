@@ -31,13 +31,13 @@ const useReflectionsList = ({ userId, userToken }: UseReflectionsListProps) => {
 
       try {
         const response = await fetch(
-          `http://185.150.1.9:8081/api/users/reflections/${userId}`,
+          `${import.meta.env.VITE_LOCAL_API_URL}/users/reflections/${userId}`,
           {
             method: 'GET',
             headers: {
               'Content-Type': 'application/json',
-              Authorization: `Bearer ${userToken}`,
-            },
+              Authorization: `Bearer ${userToken}`
+            }
           }
         )
 
@@ -50,7 +50,8 @@ const useReflectionsList = ({ userId, userToken }: UseReflectionsListProps) => {
         const data: ReflectionResponse[] = await response.json()
         setReflections(data)
       } catch (err) {
-        const errorMessage = err instanceof Error ? err.message : 'Unknown error'
+        const errorMessage =
+          err instanceof Error ? err.message : 'Unknown error'
         setError(errorMessage)
         console.error(err)
       }

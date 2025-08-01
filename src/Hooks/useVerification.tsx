@@ -17,7 +17,7 @@ const useVerification = ({ userToken, setUserToken }: tokenData) => {
     const tokenVerification = async () => {
       try {
         const response = await fetch(
-          'http://185.150.1.9:8081/api/auth/verify',
+          `${import.meta.env.VITE_LOCAL_API_URL}/auth/verify`,
           {
             method: 'POST',
             headers: {
