@@ -8,6 +8,4 @@ Created for a JustIT hackathon, 28th July - 1st August 2025.
 
 The frontend of this application uses Vite + React + Typescript.
 
-The project is hosted here: https://uplift-hackathon.netlify.app/
-
-Note: you will need to run the server for the app to work.
+Note: you will need to run the backend too for the app to work.
